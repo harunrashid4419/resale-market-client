@@ -8,3 +8,14 @@
 #forget a:hover{
     color: white;
 }
+
+@media screen and (max-width: 992px) {
+    .form{
+        width: 70%;
+    }
+}
+@media screen and (max-width: 576px) {
+    .form{
+        width: 95%;
+    }
+}
