@@ -1,17 +1,21 @@
-import React from 'react';
-import { useLoaderData } from 'react-router-dom';
-import BookingModal from '../BookingModal/BookingModal';
-import SingleProduct from '../SingleProduct/SingleProduct';
+import React, { useState } from "react";
+import { useLoaderData } from "react-router-dom";
+import BookingModal from "../BookingModal/BookingModal";
+import SingleProduct from "../SingleProduct/SingleProduct";
 
 const Products = () => {
    const products = useLoaderData();
-
+   const [product, setProduct] = useState(null);
    return (
       <div>
-         {
-            products.map(product => <SingleProduct key={product._id} product={product}></SingleProduct>)
-         }
-         <BookingModal></BookingModal>
+         {products.map((product) => (
+            <SingleProduct
+               setProduct={setProduct}
+               key={product._id}
+               product={product}
+            ></SingleProduct>
+         ))}
+         {product && <BookingModal product={product}></BookingModal>}
       </div>
    );
 };

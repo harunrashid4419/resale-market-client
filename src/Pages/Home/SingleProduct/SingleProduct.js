@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { AuthContext } from "../../../Router/context/UsersContext";
 import "./SingleProduct.css";
 
-const SingleProduct = ({ product }) => {
+const SingleProduct = ({ product, setProduct }) => {
    const { image, location, original_price, name, used_of_year, sell_price } =
       product;
    const { user } = useContext(AuthContext);
@@ -29,7 +29,7 @@ const SingleProduct = ({ product }) => {
                <p className="card-title">Used {used_of_year} years</p>
             </div>
             <div className="card-actions mx-auto mt-5">
-               <label className="btn btn-primary" htmlFor="my-modal-3">
+               <label onClick={() => setProduct(product)} htmlFor="my-modal-3" className="btn">
                   Book Now
                </label>
             </div>
