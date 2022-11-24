@@ -8,12 +8,15 @@ export const AuthContext = createContext();
 
 const UsersContext = ({children}) => {
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(false);
 
     const createUser = (email, password) =>{
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
     const logIn = (email, password) =>{
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
     }
 
@@ -27,12 +30,12 @@ const UsersContext = ({children}) => {
 
     useEffect(() =>{
         onAuthStateChanged(auth, currentUser => {
-            console.log('user observed')
             setUser(currentUser);
+            setLoading(false);
         })
     }, [])
 
-    const authInfo = {createUser, logIn, user, logOut, updateUser};
+    const authInfo = {createUser, logIn, user, logOut, updateUser, loading};
 
     return (
         <AuthContext.Provider value={authInfo}>

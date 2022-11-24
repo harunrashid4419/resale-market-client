@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Login.css";
 import { FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
@@ -7,26 +7,33 @@ import { AuthContext } from "../../Router/context/UsersContext";
 import toast from "react-hot-toast";
 
 const Login = () => {
-   const { logIn } = useContext(AuthContext);
+   const { logIn, user } = useContext(AuthContext);
    const [error, setError] = useState("");
    const { register, handleSubmit } = useForm();
    const navigate = useNavigate();
+   const location = useLocation();
+   const from = location.state?.from?.pathname || "/";
 
    const handleLogin = (data) => {
       console.log(data);
       logIn(data.email, data.password)
          .then((result) => {
             const user = result.user;
-            toast.success('Login success')
+            toast.success("Login success");
             console.log(user);
             setError("");
-            navigate('/');
          })
          .catch((error) => {
             console.error(error);
             setError(error.message);
          });
    };
+
+   useEffect(() =>{
+      if(user && user?.email){
+         navigate(from, { replace: true });
+      }
+   }, [from, navigate, user])
 
    return (
       <div className="form">
