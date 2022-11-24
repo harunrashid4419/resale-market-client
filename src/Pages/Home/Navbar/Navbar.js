@@ -4,12 +4,12 @@ import { AuthContext } from "../../../Router/context/UsersContext";
 
 const Navbar = () => {
    const { user, logOut } = useContext(AuthContext);
-   console.log(user)
-   const handleSignOut = () =>{
+
+   const handleSignOut = () => {
       logOut()
          .then(() => {})
-         .catch(error => console.log(error))
-   }
+         .catch((error) => console.log(error));
+   };
 
    const menu = (
       <>
@@ -17,10 +17,16 @@ const Navbar = () => {
             <Link to="/">Home</Link>
             {user ? (
                <>
-                  <button onClick={handleSignOut} className="btn btn-warning">LogOut</button>
+                  <Link to="/blog">Blog</Link>
+                  <Link to="/dashboard">Dashboard</Link>
+                  <button onClick={handleSignOut} className="btn btn-warning">
+                     LogOut
+                  </button>
                </>
             ) : (
-               <Link to="/login">Login</Link>
+               <>
+                  <Link to="/login">Login</Link>
+               </>
             )}
          </li>
       </>
@@ -53,7 +59,9 @@ const Navbar = () => {
                   {menu}
                </ul>
             </div>
-            <Link to='/' className="btn btn-ghost normal-case text-xl">SellerBD.com</Link>
+            <Link to="/" className="btn btn-ghost normal-case text-xl">
+               SellerBD.com
+            </Link>
          </div>
          <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal p-0">{menu}</ul>
