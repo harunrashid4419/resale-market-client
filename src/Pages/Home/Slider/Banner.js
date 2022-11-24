@@ -2,8 +2,8 @@ import React from "react";
 import './Banner.css';
 
 const Banner = ({ slider }) => {
-   console.log(slider);
    const { id, image, previous, next } = slider;
+   
    return (
       <div id={`slide${id}`} className="carousel-item relative w-full">
          <img src={image} alt="" className="w-full" />
