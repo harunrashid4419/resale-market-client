@@ -1,15 +1,46 @@
 import React, { useContext } from "react";
+import toast from "react-hot-toast";
 import { AuthContext } from "../../../Router/context/UsersContext";
 
-const BookingModal = ({ product }) => {
+const BookingModal = ({ product, setProduct }) => {
    const { user } = useContext(AuthContext);
    const { name, sell_price } = product;
-   
-   const handleSubmit = event =>{
-        event.preventDefault();
-    
-   }
-   
+
+   const handleSubmit = (event) => {
+      event.preventDefault();
+
+      const form = event.target;
+      const productName = form.productName.value;
+      const userName = form.userName.value;
+      const userEmail = form.userEmail.value;
+      const price = form.price.value;
+      const number = form.number.value;
+      const location = form.location.value;
+
+      const booked = {
+         productName,
+         userName,
+         userEmail,
+         price,
+         number,
+         location,
+      };
+      fetch('http://localhost:5000/orders', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(booked)
+      })
+        .then(res => res.json())
+        .then(data =>{
+            if(data.acknowledged){
+                setProduct(null)
+                toast.success('order success');
+            }
+        })
+   };
+
    return (
       <div>
          <input type="checkbox" id="my-modal-3" className="modal-toggle" />
@@ -26,7 +57,7 @@ const BookingModal = ({ product }) => {
                      <input
                         type="text"
                         defaultValue={name}
-                        disabled
+                        disabled={true}
                         placeholder="Type here"
                         className="input input-bordered w-full"
                         name="productName"
@@ -36,7 +67,7 @@ const BookingModal = ({ product }) => {
                      <input
                         type="text"
                         defaultValue={user?.displayName}
-                        disabled
+                        disabled={true}
                         placeholder="Type here"
                         className="input input-bordered w-full"
                         name="userName"
@@ -46,7 +77,7 @@ const BookingModal = ({ product }) => {
                      <input
                         type="text"
                         defaultValue={user?.email}
-                        disabled
+                        disabled={true}
                         placeholder="Type here"
                         className="input input-bordered w-full"
                         name="userEmail"
@@ -56,7 +87,7 @@ const BookingModal = ({ product }) => {
                      <input
                         type="text"
                         defaultValue={sell_price}
-                        disabled
+                        disabled={true}
                         placeholder="Type here"
                         className="input input-bordered w-full"
                         name="price"
@@ -75,7 +106,7 @@ const BookingModal = ({ product }) => {
                         type="number"
                         placeholder="Sell Number"
                         className="input input-bordered w-full"
-                        name="price"
+                        name="number"
                      />
                   </div>
                   <div className="mb-3">
