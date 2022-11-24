@@ -1,3 +1,4 @@
+import { data } from "autoprefixer";
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -6,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Router/context/UsersContext";
 
 const Register = () => {
-   const { createUser } = useContext(AuthContext);
+   const { createUser, updateUser } = useContext(AuthContext);
    const navigate = useNavigate();
 
    const {
@@ -20,9 +21,18 @@ const Register = () => {
       createUser(data.email, data.password)
          .then((result) => {
             const user = result.user;
-            toast.success('Sign up success');
+            toast.success("Sign up success");
             console.log(user);
-            navigate('/login')
+            const userInfo = {
+               displayName: data.name,
+               photoURL: data.photoURL,
+            };
+            updateUser(userInfo)
+               .then((result) => {
+                  navigate("/login");
+                  console.log(result);
+               })
+               .catch((error) => console.error(error));
          })
          .catch((error) => {
             console.log(error);
@@ -45,6 +55,22 @@ const Register = () => {
                      required: "Name is required",
                   })}
                   placeholder="name"
+                  className="input input-bordered"
+               />
+               {errors?.name && (
+                  <p className="text-red-500 mt-2">{errors?.name?.message}</p>
+               )}
+            </div>
+            <div className="form-control">
+               <label className="label">
+                  <span className="label-text text-white">PhotoURL</span>
+               </label>
+               <input
+                  type="text"
+                  {...register("photoURL", {
+                     required: "PhotoUrl is required",
+                  })}
+                  placeholder="Photo"
                   className="input input-bordered"
                />
                {errors?.name && (

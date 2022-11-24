@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 import { FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
@@ -10,6 +10,7 @@ const Login = () => {
    const { logIn } = useContext(AuthContext);
    const [error, setError] = useState("");
    const { register, handleSubmit } = useForm();
+   const navigate = useNavigate();
 
    const handleLogin = (data) => {
       console.log(data);
@@ -19,6 +20,7 @@ const Login = () => {
             toast.success('Login success')
             console.log(user);
             setError("");
+            navigate('/');
          })
          .catch((error) => {
             console.error(error);
