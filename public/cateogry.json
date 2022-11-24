@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Samsung",
+        "category_id": "1"
+    },
+    {
+        "name": "Waltion",
+        "category_id": "2"
+    },
+    {
+        "name": "Vission",
+        "category_id": "3"
+    }
+]

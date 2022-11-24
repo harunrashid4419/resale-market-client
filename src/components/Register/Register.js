@@ -1,4 +1,3 @@
-import { data } from "autoprefixer";
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -17,7 +16,7 @@ const Register = () => {
    } = useForm();
 
    const handleRegister = (data) => {
-      console.log(data);
+      // console.log(data);
       createUser(data.email, data.password)
          .then((result) => {
             const user = result.user;
@@ -29,14 +28,35 @@ const Register = () => {
             };
             updateUser(userInfo)
                .then((result) => {
+                  savedUserInDatabase(
+                     data.name,
+                     data.email,
+                     data.photoURL,
+                     data.role
+                  );
                   navigate("/login");
-                  console.log(result);
                })
                .catch((error) => console.error(error));
          })
          .catch((error) => {
             console.log(error);
          });
+   };
+
+   const savedUserInDatabase = (name, email, photoURL, role) => {
+      const userInfo = { name, email, photoURL, role };
+      console.log(userInfo);
+      fetch('http://localhost:5000/users', {
+         method: 'POST',
+         headers: {
+            'content-type':'application/json'
+         },
+         body: JSON.stringify(userInfo)
+      })
+      .then(res => res.json())
+      .then(data =>{
+         console.log(data);
+      })
    };
 
    return (

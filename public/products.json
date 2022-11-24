@@ -1,0 +1,75 @@
+[
+    {
+        "category_id": "1",
+        "name": "Samsung 32in Led tv",
+        "original_price": "27000",
+        "sell_price": "18000",
+        "location": "Mirpur-1",
+        "used_of_year": "2",
+        "image": "https://media.karousell.com/media/photos/products/2018/10/03/used_32_inch_samsung_tv_not_smart_tv_1538566393_5a6ec101.jpg"
+    },
+    {
+        "category_id": "1",
+        "name": "Samsung 24in Led tv",
+        "original_price": "300",
+        "sell_price": "180",
+        "location": "Serpur",
+        "used_of_year": "1.5",
+        "image": "https://sc01.alicdn.com/kf/HTB14mCyQFXXXXbNXXXXq6xXFXXXP/200990090/HTB14mCyQFXXXXbNXXXXq6xXFXXXP.jpg_.webp"
+    },
+    {
+        "category_id": "2",
+        "name": "Walton 32in tv",
+        "original_price": "29000",
+        "sell_price": "21000",
+        "location": "Banani",
+        "used_of_year": "1",
+        "image": "https://waltonbd.com/image/magictoolbox_cache/cf3e6ec01aac7cb79461bcfe9d0d075e/3/2/3221_product/thumb500x500/3792750890/1.jpg"
+    },
+    {
+        "category_id": "1",
+        "name": "Samsung 42in tv",
+        "original_price": "38500",
+        "sell_price": "26500",
+        "location": "Mohakhali",
+        "used_of_year": "2",
+        "image": "http://static.clickbd.com/global/classified/item_img/2112226_0_original.jpg"
+    },
+    {
+        "category_id": "3",
+        "name": "Vision 32in Led tv",
+        "original_price": "22000",
+        "sell_price": "7000",
+        "location": "Mirpur-10",
+        "used_of_year": "4",
+        "image": "http://www.mrelectronicsbd.com/wp-content/uploads/2017/08/vision-led-hd-tv-22-3.jpg"
+    },
+    {
+        "category_id": "3",
+        "name": "Vision 24in Led tv",
+        "original_price": "21500",
+        "sell_price": "15200",
+        "location": "Uttora",
+        "used_of_year": "3",
+        "image": "https://i.pcmag.com/imagery/reviews/02lqowvHPMpag9SzXxdJAKA-1.fit_lim.size_840x473.v1667578897.jpg"
+    },
+    {
+        "category_id": "2",
+        "name": "Walton 24in Led tv",
+        "original_price": "17000",
+        "sell_price": "15200",
+        "location": "Uttora",
+        "used_of_year": "1",
+        "image": "https://www.bikrisohoj.com/uploads/product/Electronics/TVs/medium/20201007_224728.jpg"
+    },
+    {
+        "category_id": "2",
+        "name": "Walton 42in tv",
+        "original_price": "35000",
+        "sell_price": "21000",
+        "location": "Banani",
+        "used_of_year": "2",
+        "image": "https://waltonbd.com/image/catalog/tv/smart-tv/W24D29%20ID%20image/05.png"
+    }
+]
+
