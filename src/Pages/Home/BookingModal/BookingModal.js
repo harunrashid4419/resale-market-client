@@ -4,7 +4,7 @@ import { AuthContext } from "../../../Router/context/UsersContext";
 
 const BookingModal = ({ product, setProduct }) => {
    const { user } = useContext(AuthContext);
-   const { name, sell_price } = product;
+   const { name, sell_price, image } = product;
 
    const handleSubmit = (event) => {
       event.preventDefault();
@@ -15,7 +15,7 @@ const BookingModal = ({ product, setProduct }) => {
       const userEmail = form.userEmail.value;
       const price = form.price.value;
       const number = form.number.value;
-      const location = form.location.value;
+      const location = form.location.value;      
 
       const booked = {
          productName,
@@ -24,6 +24,7 @@ const BookingModal = ({ product, setProduct }) => {
          price,
          number,
          location,
+         image
       };
       fetch('http://localhost:5000/orders', {
         method: 'POST',

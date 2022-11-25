@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import errorImg from '../../../assets/image/error-icon-28.png.crdownload';
+import errorImg from '../../../assets/image/errorImg.jpg';
 
 const ErrorPage = () => {
     return (

@@ -6,7 +6,7 @@ import Main from '../../Layout/Main/Main';
 import AddProduct from "../../Pages/Dashboard/AddProducts/AddProduct";
 import AllBayer from "../../Pages/Dashboard/AllBayer/AllBayer";
 import AllSeller from "../../Pages/Dashboard/AllSeller/AllSeller";
-import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
+import Orders from "../../Pages/Dashboard/Dashboard/Orders/Orders";
 import MyProducts from "../../Pages/Dashboard/MyProducts/MyProducts";
 import Home from "../../Pages/Home/Home";
 import Products from "../../Pages/Home/Products/Products";
@@ -61,8 +61,8 @@ const routes = createBrowserRouter([
                 element: <AllSeller></AllSeller>
             },
             {
-                path: '/dashboard/myOrder',
-                element: <MyOrders></MyOrders>
+                path: '/dashboard/order',
+                element: <Orders></Orders>
             },
             {
                 path: '/dashboard/myProduct',

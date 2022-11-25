@@ -1,13 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { FaGoogle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
+import useToken from "../../hooks/useSeller/useToken/useToken";
 import { AuthContext } from "../../Router/context/UsersContext";
 
 const Register = () => {
    const { createUser, updateUser } = useContext(AuthContext);
    const navigate = useNavigate();
+   const [tokenEmail, setTokenEmail] = useState("");
+   const [token] = useToken(tokenEmail);
+
+   if (token) {
+      navigate("/login");
+   }
 
    const {
       register,
@@ -34,7 +41,6 @@ const Register = () => {
                      data.photoURL,
                      data.role
                   );
-                  navigate("/login");
                })
                .catch((error) => console.error(error));
          })
@@ -46,17 +52,18 @@ const Register = () => {
    const savedUserInDatabase = (name, email, photoURL, role) => {
       const userInfo = { name, email, photoURL, role };
       console.log(userInfo);
-      fetch('http://localhost:5000/users', {
-         method: 'POST',
+      fetch("http://localhost:5000/users", {
+         method: "POST",
          headers: {
-            'content-type':'application/json'
+            "content-type": "application/json",
          },
-         body: JSON.stringify(userInfo)
+         body: JSON.stringify(userInfo),
       })
-      .then(res => res.json())
-      .then(data =>{
-         console.log(data);
-      })
+         .then((res) => res.json())
+         .then((data) => {
+            console.log(data);
+            setTokenEmail(email);
+         });
    };
 
    return (
