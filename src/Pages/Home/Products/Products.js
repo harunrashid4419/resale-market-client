@@ -8,14 +8,21 @@ const Products = () => {
    const [product, setProduct] = useState(null);
    return (
       <div>
-         {products.map((product) => (
-            <SingleProduct
+         <div className="grid md:grid-cols-2 grid-cols-1 gap-4 mt-12">
+            {products.map((product) => (
+               <SingleProduct
+                  setProduct={setProduct}
+                  key={product._id}
+                  product={product}
+               ></SingleProduct>
+            ))}
+         </div>
+         {product && (
+            <BookingModal
                setProduct={setProduct}
-               key={product._id}
                product={product}
-            ></SingleProduct>
-         ))}
-         {product && <BookingModal setProduct={setProduct} product={product}></BookingModal>}
+            ></BookingModal>
+         )}
       </div>
    );
 };
