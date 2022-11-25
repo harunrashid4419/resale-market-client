@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { FaGoogle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
-import useToken from "../../hooks/useSeller/useToken/useToken";
+import useToken from "../../hooks/useToken";
 import { AuthContext } from "../../Router/context/UsersContext";
 
 const Register = () => {
@@ -65,6 +65,17 @@ const Register = () => {
             setTokenEmail(email);
          });
    };
+
+   // const getUsersToken = email =>{
+   //    fetch(`http://localhost:5000/jwt?email=${email}`)
+   //       .then(res => res.json())
+   //       .then(data =>{
+   //          if(data.accessToken){
+   //             localStorage.setItem('accessToken', data.accessToken);
+   //             navigate("/login");
+   //          }
+   //       })
+   // }
 
    return (
       <div className="form">
