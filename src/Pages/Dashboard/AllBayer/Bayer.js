@@ -1,9 +1,10 @@
 import React from "react";
 import toast from "react-hot-toast";
 
-const Seller = ({ user, refetch }) => {
-    const {photoURL, name, email, _id} = user;
-    console.log(user)
+const Bayer = ({bayer, refetch}) => {
+console.log(bayer.role)
+    const {photoURL, name, email, _id} = bayer;
+
     const handleDelete = id =>{
         fetch(`http://localhost:5000/users/${id}`, {
             method: 'DELETE'
@@ -19,20 +20,25 @@ const Seller = ({ user, refetch }) => {
     }
 
    return (
-        <tbody>
-         {user.role === "Seller" && (
+      <tbody>
+         {bayer.role === "Bayer" && (
             <tr>
                <th>
                   <div className="avatar">
                      <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                        <img src={photoURL} alt='' />
+                        <img src={photoURL} alt="" />
                      </div>
                   </div>
                </th>
                <td>{name}</td>
                <td>{email}</td>
                <td>
-                  <button onClick={() => handleDelete(_id)} className="btn btn-sm">Delete</button>
+                  <button
+                     onClick={() => handleDelete(_id)}
+                     className="btn btn-sm"
+                  >
+                     Delete
+                  </button>
                </td>
             </tr>
          )}
@@ -40,4 +46,4 @@ const Seller = ({ user, refetch }) => {
    );
 };
 
-export default Seller;
+export default Bayer;
