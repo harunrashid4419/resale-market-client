@@ -2,7 +2,7 @@ import React from "react";
 
 const OrderDetails = ({ order }) => {
    const { productName, price, image } = order;
-   console.log(order);
+
    return (
       <div className="card w-96 bg-base-100 shadow-xl pt-10">
          <figure>

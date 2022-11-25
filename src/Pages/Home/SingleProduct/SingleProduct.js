@@ -3,7 +3,7 @@ import { AuthContext } from "../../../Router/context/UsersContext";
 import "./SingleProduct.css";
 
 const SingleProduct = ({ product, setProduct }) => {
-   const { image, location, original_price, name, used_of_year, sell_price } =
+   const { image, location, original_price, date, name, used_of_year, sell_price } =
       product;
    const { user } = useContext(AuthContext);
 
@@ -15,7 +15,7 @@ const SingleProduct = ({ product, setProduct }) => {
             </figure>
             <div>
                <h2 className="card-title">{name}</h2>
-               <p className="card-title">Posted Time</p>
+               <p className="card-title">Posted Time: {date}</p>
                <h2 className="card-title">
                   Original-Price: {original_price}TK.
                </h2>

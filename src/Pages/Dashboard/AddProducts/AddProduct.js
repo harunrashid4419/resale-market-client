@@ -1,7 +1,54 @@
-import React from "react";
+import React, { useContext } from "react";
+import toast from "react-hot-toast";
+import { AuthContext } from "../../../Router/context/UsersContext";
 
 const AddProduct = () => {
-   const handleSubmit = (event) => {};
+   const {user} = useContext(AuthContext);
+   const handleSubmit = (event) => {
+      event.preventDefault();
+
+      const form = event.target;
+      const name = form.productName.value;
+      const price = form.price.value;
+      const review = form.review.value;
+      const fullCategory = form.category.value;
+      const category = fullCategory.split(' ')[0];
+      const number = form.number.value;
+      const description = form.description.value;
+      const usedOfYear = form.used.value;
+      const image = form.image.value;
+      const date = new Date();
+      const cell_price = form.cellPrice.value;
+      
+      const product = {
+         name,
+         cell_price: price,
+         review,
+         category_id: category,
+         number, 
+         description,
+         used_of_year: usedOfYear,
+         image,
+         date,
+         sell_price: cell_price,
+         email: user.email
+      }
+      
+      fetch('http://localhost:5000/products', {
+         method: 'POST', 
+         headers: {
+            'content-type': 'application/json'
+         },
+         body: JSON.stringify(product)
+      })
+         .then(res => res.json())
+         .then(data =>{
+            console.log(data)
+            if(data.acknowledged){
+               toast.success('products added');
+            }
+         })
+   };
 
    return (
       <div className='md:pr-32 pr-4 md:py-24 py-4'>
@@ -18,21 +65,29 @@ const AddProduct = () => {
             <div className="mb-3">
                <input
                   type="number"
-                  placeholder="Price"
+                  placeholder="Original Price"
                   className="input input-bordered w-full"
                   name="price"
                />
             </div>
             <div className="mb-3">
-               <select className="select select-bordered w-full">
-                  <option selected>Excellent</option>
+               <input
+                  type="number"
+                  placeholder="Cell Price"
+                  className="input input-bordered w-full"
+                  name="cellPrice"
+               />
+            </div>
+            <div className="mb-3">
+               <select name="review" className="select select-bordered w-full">
+                  <option>Excellent</option>
                   <option>Good</option>
                   <option>Fair</option>
                </select>
             </div>
             <div className="mb-3">
-               <select className="select select-bordered w-full">
-                  <option selected>1 Samsung</option>
+               <select name='category' className="select select-bordered w-full">
+                  <option>1 Samsung</option>
                   <option>2 Waltion</option>
                   <option>3 Vission</option>
                </select>
@@ -46,8 +101,16 @@ const AddProduct = () => {
                />
             </div>
             <div className="mb-3">
-               <select className="select select-bordered w-full">
-                  <option selected>Dhaka</option>
+               <input
+                  type="text"
+                  placeholder="ImageURL"
+                  className="input input-bordered w-full"
+                  name="image"
+               />
+            </div>
+            <div className="mb-3">
+               <select name="location" className="select select-bordered w-full">
+                  <option>Dhaka</option>
                   <option>Rajshahi</option>
                   <option>Khulna</option>
                   <option>Natore</option>
