@@ -1,30 +1,34 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import './Footer.css';
 
 const Footer = () => {
    return (
-      <footer className="footer p-10 bg-neutral text-neutral-content">
-         <div>
-            <span className="footer-title">Services</span>
-            <Link className="link link-hover">Branding</Link>
-            <Link className="link link-hover">Design</Link>
-            <Link className="link link-hover">Marketing</Link>
-            <Link className="link link-hover">Advertisement</Link>
+      <div className="footer-section">
+         <div className="footer">
+            <div className="left-column">
+               <Link to='/'><h3>SellerBD.com</h3></Link>
+               <p>
+                  Do you want to buy second hand luxury car? You can come to us
+                  if you want to buy a car. We sell second hand cars at low
+                  prices. You are invited to see the car in our shop
+               </p>
+            </div>
+            <div className="link">
+               <Link to=''>Home</Link>
+               <Link to=''>About</Link>
+               <Link to=''>Blog</Link>
+               <Link to=''>Dashboard</Link>
+            </div>
+            <div className="contact">
+               <h2>Contact Us</h2>
+               <h3>Phone: +88014554844</h3>
+               <h3>Phone: +88014012457</h3>
+               <h3>Email: jafor@gmail.com</h3>
+            </div>
          </div>
-         <div>
-            <span className="footer-title">Company</span>
-            <Link className="link link-hover">About us</Link>
-            <Link className="link link-hover">Contact</Link>
-            <Link className="link link-hover">Jobs</Link>
-            <Link className="link link-hover">Press kit</Link>
-         </div>
-         <div>
-            <span className="footer-title">Legal</span>
-            <Link className="link link-hover">Terms of use</Link>
-            <Link className="link link-hover">Privacy policy</Link>
-            <Link className="link link-hover">Cookie policy</Link>
-         </div>
-      </footer>
+         <p className="text-center py-5">copyright &copy; 2022 CELLERBD.COM</p>
+      </div>
    );
 };
 
