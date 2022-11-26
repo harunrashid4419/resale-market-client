@@ -71,13 +71,13 @@ const Register = () => {
          .then((result) => {
             const user = result.user;
             console.log(user);
-            savedToDb(user.displayName, user.email, user.photoURL)
+            savedToDb(user.email, user.displayName, user.photoURL)
          })
          .then((error) => console.log(error));
    };
 
    const savedToDb = (email, displayName, photoURL) => {
-      const userInfo = { name: displayName, email, photoURL, role: "Bayer" };
+      const userInfo = { email, name: displayName, photoURL, role: "Bayer" };
       console.log(userInfo);
       fetch("http://localhost:5000/users", {
          method: "POST",

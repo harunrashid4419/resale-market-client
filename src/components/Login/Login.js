@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Login.css";
-import { FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Router/context/UsersContext";
 import toast from "react-hot-toast";
+
 
 const Login = () => {
    const { logIn, user } = useContext(AuthContext);
@@ -29,11 +29,12 @@ const Login = () => {
          });
    };
 
-   useEffect(() =>{
-      if(user && user?.email){
-         navigate(from, { replace: true });
-      }
-   }, [from, navigate, user])
+      useEffect(() => {
+         if (user && user?.email) {
+            navigate(from, { replace: true });
+         }
+      }, [from, navigate, user]);
+
 
    return (
       <div className="form">

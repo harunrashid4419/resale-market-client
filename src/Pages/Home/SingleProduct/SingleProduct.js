@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+import { useQuery } from "@tanstack/react-query";
+import React, { useContext, useEffect } from "react";
 import { AuthContext } from "../../../Router/context/UsersContext";
 import "./SingleProduct.css";
 
@@ -12,8 +13,10 @@ const SingleProduct = ({ product, setProduct }) => {
       used_of_year,
       sell_price,
    } = product;
-   const { user } = useContext(AuthContext);
 
+   const { user } = useContext(AuthContext);
+   
+   
    return (
       <div className="single_products">
          <div className="card w-full bg-base-100 shadow-xl p-5">
