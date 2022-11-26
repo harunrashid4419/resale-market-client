@@ -7,7 +7,7 @@ import useToken from "../../hooks/useToken";
 import { AuthContext } from "../../Router/context/UsersContext";
 
 const Register = () => {
-   const { createUser, updateUser } = useContext(AuthContext);
+   const { createUser, updateUser, googleSignIn } = useContext(AuthContext);
    const navigate = useNavigate();
    const [tokenEmail, setTokenEmail] = useState("");
    const [token] = useToken(tokenEmail);
@@ -66,16 +66,32 @@ const Register = () => {
          });
    };
 
-   // const getUsersToken = email =>{
-   //    fetch(`http://localhost:5000/jwt?email=${email}`)
-   //       .then(res => res.json())
-   //       .then(data =>{
-   //          if(data.accessToken){
-   //             localStorage.setItem('accessToken', data.accessToken);
-   //             navigate("/login");
-   //          }
-   //       })
-   // }
+   const handleGoogleSignIn = () => {
+      googleSignIn()
+         .then((result) => {
+            const user = result.user;
+            console.log(user);
+            savedToDb(user.displayName, user.email, user.photoURL)
+         })
+         .then((error) => console.log(error));
+   };
+
+   const savedToDb = (email, displayName, photoURL) => {
+      const userInfo = { name: displayName, email, photoURL, role: "Bayer" };
+      console.log(userInfo);
+      fetch("http://localhost:5000/users", {
+         method: "POST",
+         headers: {
+            "content-type": "application/json",
+         },
+         body: JSON.stringify(userInfo),
+      })
+         .then((res) => res.json())
+         .then((data) => {
+            console.log(data);
+            setTokenEmail(email);
+         });
+   };
 
    return (
       <div className="form">
@@ -186,7 +202,10 @@ const Register = () => {
          </form>
          <div className="divider text-white">OR</div>
          <Link>
-            <div className="bg-white p-3 rounded-md">
+            <div
+               onClick={handleGoogleSignIn}
+               className="bg-white p-3 rounded-md"
+            >
                <p className="fond-bold text-xl flex items-center justify-center">
                   <FaGoogle className="mr-2" />
                   Sign in with google

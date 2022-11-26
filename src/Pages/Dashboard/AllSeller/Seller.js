@@ -34,6 +34,9 @@ const Seller = ({ user, refetch }) => {
                <td>
                   <button onClick={() => handleDelete(_id)} className="btn btn-sm">Delete</button>
                </td>
+               <td>
+                  <button className="btn btn-sm">Verify</button>
+               </td>
             </tr>
          )}
       </tbody>

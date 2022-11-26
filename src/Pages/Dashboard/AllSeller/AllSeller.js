@@ -23,6 +23,7 @@ const AllSeller = () => {
                      <th>Name</th>
                      <th>Email</th>
                      <th>Action</th>
+                     <th>Verify</th>
                   </tr>
                </thead>
                {users.map((user, i) => (

@@ -4,10 +4,13 @@ const OrderDetails = ({ order }) => {
    const { productName, price, image } = order;
 
    return (
-      <div className="card w-96 bg-base-100 shadow-xl pt-10">
-         <figure>
-            <img src={image} alt="Shoes" />
-         </figure>
+      <div className="card bg-gray-300 shadow-xl pt-10">
+         <img
+            className="mx-auto"
+            style={{ width: "200px" }}
+            src={image}
+            alt=""
+         />
          <div className="card-body">
             <h2 className="card-title">{productName}</h2>
             <p>Price: {price}</p>

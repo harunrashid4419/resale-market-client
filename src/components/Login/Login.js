@@ -72,20 +72,11 @@ const Login = () => {
             <div className="mt-3">
                <input
                   className="btn btn-neutral w-full"
-                  value="Register"
+                  value="Login"
                   type="submit"
                />
             </div>
          </form>
-         <div className="divider text-white">OR</div>
-         <Link>
-            <div className="bg-white p-3 rounded-md">
-               <p className="fond-bold text-xl flex items-center justify-center">
-                  <FaGoogle className="mr-2" />
-                  Sign in with google
-               </p>
-            </div>
-         </Link>
          <p className="text-white text-center mt-6 text-xl">
             Don't have any account{" "}
             <Link className="text-primary" to="/register">
