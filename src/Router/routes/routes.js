@@ -13,7 +13,9 @@ import Products from "../../Pages/Home/Products/Products";
 import Blog from "../../Pages/Others/Blog";
 import ErrorPage from "../../Pages/Others/ErrorPage/ErrorPage";
 import AdminRoutes from "../AdminRoutes/AdminRoutes";
+import BayerRoutes from "../BayerRoutes/BayerRoutes";
 import PrivateRouter from "../PrivateRouter/PrivateRouter";
+import SellerRoutes from "../SellerRoutes/SellerRoutes";
 
 const routes = createBrowserRouter([
     {
@@ -59,7 +61,7 @@ const routes = createBrowserRouter([
             },
             {
                 path: '/dashboard/seller',
-                element: <AdminRoutes><AllSeller></AllSeller></AdminRoutes>
+                element: <AllSeller></AllSeller>
             },
             {
                 path: '/dashboard/order',
@@ -71,7 +73,7 @@ const routes = createBrowserRouter([
             },
             {
                 path: '/dashboard/bayer',
-                element: <AdminRoutes><AllBayer></AllBayer></AdminRoutes>
+                element: <AllBayer></AllBayer>
             }
         ]
     }

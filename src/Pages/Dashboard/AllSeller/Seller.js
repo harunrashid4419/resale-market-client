@@ -53,7 +53,7 @@ const Seller = ({ user, refetch }) => {
                   </button>
                </td>
                <td>
-                  {isVerify && (
+                  { (
                      <button
                         onClick={() => handleVerify(_id)}
                         className="btn btn-sm"
