@@ -19,10 +19,11 @@ const AddProduct = () => {
       const image = form.image.value;
       const date = new Date();
       const cell_price = form.cellPrice.value;
+      const location = form.location.value;
       
       const product = {
-         name,
-         cell_price: price,
+         product_name: name,
+         origin_price: price,
          review,
          category_id: category,
          number, 
@@ -31,7 +32,10 @@ const AddProduct = () => {
          image,
          date,
          sell_price: cell_price,
-         email: user.email
+         email: user.email,
+         name: user.displayName,
+         isAdd: false,
+         location
       }
       
       fetch('http://localhost:5000/products', {
@@ -46,6 +50,7 @@ const AddProduct = () => {
             console.log(data)
             if(data.acknowledged){
                toast.success('products added');
+               form.reset();
             }
          })
    };

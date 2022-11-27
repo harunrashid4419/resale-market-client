@@ -4,7 +4,7 @@ import { AuthContext } from "../../../Router/context/UsersContext";
 
 const BookingModal = ({ product, setProduct }) => {
    const { user } = useContext(AuthContext);
-   const { name, sell_price, image } = product;
+   const { product_name, sell_price, image } = product;
 
    const handleSubmit = (event) => {
       event.preventDefault();
@@ -26,6 +26,7 @@ const BookingModal = ({ product, setProduct }) => {
          location,
          image
       };
+      console.log(booked)
       fetch('http://localhost:5000/orders', {
         method: 'POST',
         headers: {
@@ -41,7 +42,7 @@ const BookingModal = ({ product, setProduct }) => {
             }
         })
    };
-
+   
    return (
       <div>
          <input type="checkbox" id="my-modal-3" className="modal-toggle" />
@@ -57,7 +58,7 @@ const BookingModal = ({ product, setProduct }) => {
                   <div className="mb-3">
                      <input
                         type="text"
-                        defaultValue={name}
+                        defaultValue={product_name}
                         disabled={true}
                         placeholder="Type here"
                         className="input input-bordered w-full"

@@ -7,15 +7,15 @@ import AddProduct from "../../Pages/Dashboard/AddProducts/AddProduct";
 import AllBayer from "../../Pages/Dashboard/AllBayer/AllBayer";
 import AllSeller from "../../Pages/Dashboard/AllSeller/AllSeller";
 import Orders from "../../Pages/Dashboard/Dashboard/Orders/Orders";
+import Payment from "../../Pages/Dashboard/Dashboard/Payment/Payment";
+import ReportedItems from "../../Pages/Dashboard/Dashboard/ReportedItems/ReportedItems";
 import MyProducts from "../../Pages/Dashboard/MyProducts/MyProducts";
 import Home from "../../Pages/Home/Home";
 import Products from "../../Pages/Home/Products/Products";
 import Blog from "../../Pages/Others/Blog";
 import ErrorPage from "../../Pages/Others/ErrorPage/ErrorPage";
 import AdminRoutes from "../AdminRoutes/AdminRoutes";
-import BayerRoutes from "../BayerRoutes/BayerRoutes";
 import PrivateRouter from "../PrivateRouter/PrivateRouter";
-import SellerRoutes from "../SellerRoutes/SellerRoutes";
 
 const routes = createBrowserRouter([
     {
@@ -51,7 +51,7 @@ const routes = createBrowserRouter([
         ]
     },
     {
-        path: 'dashboard',
+        path: '/dashboard',
         element: <PrivateRouter><DashboardLayout></DashboardLayout></PrivateRouter>,
         errorElement: <ErrorPage></ErrorPage>,
         children: [
@@ -74,6 +74,15 @@ const routes = createBrowserRouter([
             {
                 path: '/dashboard/bayer',
                 element: <AllBayer></AllBayer>
+            },
+            {
+                path: '/dashboard/report',
+                element: <AdminRoutes><ReportedItems></ReportedItems></AdminRoutes>
+            },
+            {
+                path: '/dashboard/payment/:id',
+                element: <Payment></Payment>,
+                loader: ({params}) => fetch(`http://localhost:5000/orders/${params.id}`)
             }
         ]
     }

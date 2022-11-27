@@ -30,7 +30,7 @@ const MyProducts = () => {
                 }
             })
    }
-
+console.log(products)
    return (
       <div>
          <p className="text-3xl text-primary font-bold">My Products</p>
@@ -40,7 +40,7 @@ const MyProducts = () => {
                 <img style={{width: '400px'}} className="p-5 mx-auto" src={product.image} alt="" />
                   <div className="card-body items-center text-center">
                      <h2 className="card-title">{product.name}</h2>
-                     <p>Price: {product.price} tk.</p>
+                     <p>Price: {product.cell_price} tk.</p>
                      <div className="card-actions justify-end">
                         <button onClick={() => handleDelete(product._id)} className="btn btn-primary">Delete</button>
                         <button className="btn btn-ghost">Available</button>
