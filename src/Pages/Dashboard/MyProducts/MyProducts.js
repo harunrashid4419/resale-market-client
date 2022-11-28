@@ -39,8 +39,8 @@ console.log(products)
                <div className="card bg-neutral text-neutral-content">
                 <img style={{width: '400px'}} className="p-5 mx-auto" src={product.image} alt="" />
                   <div className="card-body items-center text-center">
-                     <h2 className="card-title">{product.name}</h2>
-                     <p>Price: {product.cell_price} tk.</p>
+                     <h2 className="card-title">{product.product_name}</h2>
+                     <p>Price: {product.sell_price} tk.</p>
                      <div className="card-actions justify-end">
                         <button onClick={() => handleDelete(product._id)} className="btn btn-primary">Delete</button>
                         <button className="btn btn-ghost">Available</button>

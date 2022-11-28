@@ -70,6 +70,7 @@ const Register = () => {
       googleSignIn()
          .then((result) => {
             const user = result.user;
+            // navigate('/')
             console.log(user);
             savedToDb(user.email, user.displayName, user.photoURL);
          })

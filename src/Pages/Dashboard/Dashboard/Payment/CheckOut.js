@@ -9,8 +9,8 @@ const CheckOut = ({ order }) => {
    const [processing, setProcessing] = useState(false);
    const [transitionId, setTransitionId] = useState("");
    const [clientSecret, setClientSecret] = useState("");
-   const { price, email, _id } = order;
-   console.log('inside',order)
+   const { price, email, _id, productId } = order;
+   console.log('inside',order.productId)
 
    useEffect(() => {
       // Create PaymentIntent as soon as the page loads
@@ -72,7 +72,8 @@ const CheckOut = ({ order }) => {
                 price,
                 email,
                 transitionId: paymentIntent.id,
-                ordersId: _id
+                ordersId: _id,
+                productId
             }
             fetch('http://localhost:5000/payments', {
                 method: 'POST',

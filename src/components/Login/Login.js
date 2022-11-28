@@ -4,6 +4,7 @@ import "./Login.css";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Router/context/UsersContext";
 import toast from "react-hot-toast";
+import useToken from "../../hooks/useToken";
 
 
 const Login = () => {
@@ -13,6 +14,8 @@ const Login = () => {
    const navigate = useNavigate();
    const location = useLocation();
    const from = location.state?.from?.pathname || "/";
+   const [tokenEmail, setTokenEmail] = useState('');
+   const token = useToken(tokenEmail);
 
    const handleLogin = (data) => {
       console.log(data);
@@ -22,6 +25,7 @@ const Login = () => {
             toast.success("Login success");
             console.log(user);
             setError("");
+            setTokenEmail(data.email);
          })
          .catch((error) => {
             console.error(error);
@@ -30,10 +34,10 @@ const Login = () => {
    };
 
       useEffect(() => {
-         if (user && user?.email) {
+         if (user && user?.email && token) {
             navigate(from, { replace: true });
          }
-      }, [from, navigate, user]);
+      }, [from, navigate, user, token]);
 
 
    return (

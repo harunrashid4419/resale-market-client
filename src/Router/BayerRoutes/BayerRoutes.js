@@ -5,7 +5,6 @@ import Loader from "../../Pages/Others/Loader/Loader";
 import { AuthContext } from "../context/UsersContext";
 
 const BayerRoutes = ({ children }) => {
-   const location = useLocation();
    const { user, loading } = useContext(AuthContext);
    const [isBayer, isLoading] = useBayer(user?.email);
 
@@ -16,7 +15,7 @@ const BayerRoutes = ({ children }) => {
       return children;
    }
 
-   return <Navigate to="/login" state={{ from: location }} replace></Navigate>;
+   return <Navigate to="/login" replace></Navigate>;
 };
 
 export default BayerRoutes;

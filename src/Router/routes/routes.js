@@ -10,12 +10,15 @@ import Orders from "../../Pages/Dashboard/Dashboard/Orders/Orders";
 import Payment from "../../Pages/Dashboard/Dashboard/Payment/Payment";
 import ReportedItems from "../../Pages/Dashboard/Dashboard/ReportedItems/ReportedItems";
 import MyProducts from "../../Pages/Dashboard/MyProducts/MyProducts";
+import ProductsAdd from "../../Pages/Dashboard/ProductsAdd/ProductsAdd";
 import Home from "../../Pages/Home/Home";
 import Products from "../../Pages/Home/Products/Products";
 import Blog from "../../Pages/Others/Blog";
 import ErrorPage from "../../Pages/Others/ErrorPage/ErrorPage";
 import AdminRoutes from "../AdminRoutes/AdminRoutes";
+import BayerRoutes from "../BayerRoutes/BayerRoutes";
 import PrivateRouter from "../PrivateRouter/PrivateRouter";
+import SellerRoutes from "../SellerRoutes/SellerRoutes";
 
 const routes = createBrowserRouter([
     {
@@ -51,38 +54,42 @@ const routes = createBrowserRouter([
         ]
     },
     {
-        path: '/dashboard',
+        path: 'dashboard',
         element: <PrivateRouter><DashboardLayout></DashboardLayout></PrivateRouter>,
         errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
-                path: '/dashboard',
+                path: 'dashboard',
                 element: <AddProduct></AddProduct>
             },
             {
-                path: '/dashboard/seller',
-                element: <AllSeller></AllSeller>
+                path: 'seller',
+                element: <AdminRoutes><AllSeller></AllSeller></AdminRoutes>
             },
             {
-                path: '/dashboard/order',
-                element: <Orders></Orders>
+                path: 'order',
+                element: <BayerRoutes><Orders></Orders></BayerRoutes>
             },
             {
-                path: '/dashboard/myProduct',
-                element: <MyProducts></MyProducts>
+                path: 'myProduct',
+                element: <SellerRoutes><MyProducts></MyProducts></SellerRoutes>
             },
             {
-                path: '/dashboard/bayer',
-                element: <AllBayer></AllBayer>
+                path: 'bayer',
+                element: <AdminRoutes><AllBayer></AllBayer></AdminRoutes>
             },
             {
-                path: '/dashboard/report',
+                path: 'report',
                 element: <AdminRoutes><ReportedItems></ReportedItems></AdminRoutes>
             },
             {
-                path: '/dashboard/payment/:id',
+                path: 'payment/:id',
                 element: <Payment></Payment>,
                 loader: ({params}) => fetch(`http://localhost:5000/orders/${params.id}`)
+            },
+            {
+                path: 'productadd',
+                element: <SellerRoutes><ProductsAdd></ProductsAdd></SellerRoutes>
             }
         ]
     }

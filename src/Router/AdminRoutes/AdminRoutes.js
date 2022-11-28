@@ -5,17 +5,16 @@ import Loader from "../../Pages/Others/Loader/Loader";
 import { AuthContext } from "../context/UsersContext";
 
 const AdminRoutes = ({ children }) => {
-   const location = useLocation();
    const { user, loading } = useContext(AuthContext);
    const [isAdmin, isLoading] = useAdmin(user?.email);
 
    if (loading || isLoading) {
       return <Loader></Loader>;
    }
-   if (user && isAdmin) {
-      return children;
+   if (!user || !isAdmin) {
+      return <Navigate to="/login" replace></Navigate>;
    }
-   return <Navigate to="/login" state={{ from: location }} replace></Navigate>;
+   return children;
 };
 
 export default AdminRoutes;

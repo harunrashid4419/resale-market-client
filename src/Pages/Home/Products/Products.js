@@ -9,7 +9,7 @@ const Products = () => {
    return (
       <div>
          <div className="grid md:grid-cols-2 grid-cols-1 gap-4 mt-12">
-            {products.map((product) => (
+            {products.map((product) => (!product.isAdd && 
                <SingleProduct
                   setProduct={setProduct}
                   key={product._id}
