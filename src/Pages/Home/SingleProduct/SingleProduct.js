@@ -13,10 +13,10 @@ const SingleProduct = ({ product, setProduct }) => {
       product_name,
       description,
       _id,
-      isAdd
+      review,
+      number
    } = product;
-   console.log(product);
-
+   
    const reportedProduct = {
       image,
       product_id: _id,
@@ -70,6 +70,8 @@ const SingleProduct = ({ product, setProduct }) => {
                      <p className="">Sell-Price: {sell_price}Tk.</p>
                      <p className="">Location: {location}</p>
                      <p className="">Used {used_of_year} years</p>
+                     <p className="">Mobile Number: {number}</p>
+                     <p className="">Product Type: {review}</p>
                      <p className="my-5">Description: {description}</p>
                   </div>
                   <h2 className="card-title">User: {name}</h2>
@@ -84,7 +86,6 @@ const SingleProduct = ({ product, setProduct }) => {
                   </div>
                </div>
             </div>
-        
       </div>
    );
 };

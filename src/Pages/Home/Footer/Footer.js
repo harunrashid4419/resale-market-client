@@ -9,10 +9,12 @@ const Footer = () => {
             <div className="left-column">
                <Link to='/'><h3>SellerBD.com</h3></Link>
                <p>
-                  Do you want to buy second hand luxury car? You can come to us
-                  if you want to buy a car. We sell second hand cars at low
-                  prices. You are invited to see the car in our shop
+                  Do you want to buy second hand TV? You can come to us
+                  if you want to buy a tv. We sell second hand tvs at low
+                  prices. You are invited to see the tv in our shop
                </p>
+               <h5 className="text-white font-bold text-4xl mt-5">Location</h5>
+               <h3>Mirpur 10, Dhaka-1216</h3>
             </div>
             <div className="link">
                <Link to=''>Home</Link>

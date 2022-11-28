@@ -1,23 +1,26 @@
 import React from "react";
 import toast from "react-hot-toast";
 
-const Bayer = ({bayer, refetch}) => {
-console.log(bayer.role)
-    const {photoURL, name, email, _id} = bayer;
+const Bayer = ({ bayer, refetch }) => {
+   console.log(bayer.role);
+   const { photoURL, name, email, _id } = bayer;
 
-    const handleDelete = id =>{
-        fetch(`http://localhost:5000/users/${id}`, {
-            method: 'DELETE'
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                if(data.deletedCount){
-                    toast.success('delete successfully');
-                    refetch();
-                }
-            })
-    }
+   const handleDelete = (id) => {
+      const agree = window.confirm("Are your want to delete this user");
+      if (agree) {
+         fetch(`http://localhost:5000/users/${id}`, {
+            method: "DELETE",
+         })
+            .then((res) => res.json())
+            .then((data) => {
+               console.log(data);
+               if (data.deletedCount) {
+                  toast.success("delete successfully");
+                  refetch();
+               }
+            });
+      }
+   };
 
    return (
       <tbody>

@@ -10,7 +10,7 @@ const CheckOut = ({ order }) => {
    const [transitionId, setTransitionId] = useState("");
    const [clientSecret, setClientSecret] = useState("");
    const { price, email, _id, productId } = order;
-   console.log('inside',order.productId)
+   console.log('inside', order.productId)
 
    useEffect(() => {
       // Create PaymentIntent as soon as the page loads

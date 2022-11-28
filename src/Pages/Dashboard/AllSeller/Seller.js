@@ -3,19 +3,22 @@ import toast from "react-hot-toast";
 
 const Seller = ({ user, refetch }) => {
    const { photoURL, name, email, _id, isVerify } = user;
-   console.log(user);
+
    const handleDelete = (id) => {
-      fetch(`http://localhost:5000/users/${id}`, {
-         method: "DELETE",
-      })
-         .then((res) => res.json())
-         .then((data) => {
-            console.log(data);
-            if (data.deletedCount) {
-               toast.success("delete successfully");
-               refetch();
-            }
-         });
+      const agree = window.confirm("Are you want to delete this user");
+      if (agree) {
+         fetch(`http://localhost:5000/users/${id}`, {
+            method: "DELETE",
+         })
+            .then((res) => res.json())
+            .then((data) => {
+               console.log(data);
+               if (data.deletedCount) {
+                  toast.success("delete successfully");
+                  refetch();
+               }
+            });
+      }
    };
 
    const handleVerify = (id) => {
@@ -27,6 +30,7 @@ const Seller = ({ user, refetch }) => {
             console.log(data);
             if (data.acknowledged) {
                toast.success("verify success");
+               refetch();
             }
          });
    };
@@ -53,14 +57,14 @@ const Seller = ({ user, refetch }) => {
                   </button>
                </td>
                <td>
-                  { isVerify === 'isVerify' &&
+                  {!isVerify && (
                      <button
                         onClick={() => handleVerify(_id)}
                         className="btn btn-sm"
                      >
                         Verify
                      </button>
-                  }
+                  )}
                </td>
             </tr>
          )}
