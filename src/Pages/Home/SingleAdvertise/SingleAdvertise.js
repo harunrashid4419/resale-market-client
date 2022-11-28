@@ -14,9 +14,9 @@ const SingleAdvertise = ({ advertise, setAdvertise }) => {
       description,
       review,
       number,
-      product_id
+      product_id,
    } = advertise;
-   console.log(advertise)
+   console.log(advertise);
 
    const reportedProduct = {
       image,
@@ -58,15 +58,35 @@ const SingleAdvertise = ({ advertise, setAdvertise }) => {
                <img src={image} alt="" className="rounded-xl w-full h-ful" />
             </figure>
             <div className="my-5">
-               <h2 className="card-title text-red-500 mb-3">{product_name}</h2>
-
-               <h2 className="">Original-Price: {origin_price}TK.</h2>
-               <p className="">Sell-Price: {sell_price}Tk.</p>
-               <p className="">Location: {location}</p>
-               <p className="">Used {used_of_year} years</p>
-               <p className="">Mobile Number: {number}</p>
-               <p className="">Product Type: {review}</p>
-               <p className="my-5">Description: {description}</p>
+               <h2 className="font-bold text-md">
+                  Original-Price:{" "}
+                  <span className="text-xl text-primary">
+                     {origin_price}TK.
+                  </span>
+               </h2>
+               <p className="font-bold text-md">
+                  Sell-Price:{" "}
+                  <span className="text-xl text-primary">{sell_price}Tk.</span>
+               </p>
+               <p className="font-bold text-md">
+                  Location:{" "}
+                  <span className="text-xl text-primary">{location}</span>
+               </p>
+               <p className="font-bold text-md">
+                  Used:{" "}
+                  <span className="text-xl text-primary">
+                     {used_of_year} years
+                  </span>
+               </p>
+               <p className="font-bold text-md">
+                  Mobile Number:{" "}
+                  <span className="text-xl text-primary">{number}</span>
+               </p>
+               <p className="font-bold text-md">
+                  Product Type:{" "}
+                  <span className="text-xl text-primary">{review}</span>
+               </p>
+               <p className="my-5 text-md">Description: {description}</p>
             </div>
             <h2 className="card-title">User: {name}</h2>
             <div className="card-actions mx-auto mt-5">

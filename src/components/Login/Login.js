@@ -6,16 +6,16 @@ import { AuthContext } from "../../Router/context/UsersContext";
 import toast from "react-hot-toast";
 import useToken from "../../hooks/useToken";
 
-
 const Login = () => {
-   const { logIn, user } = useContext(AuthContext);
+   const { logIn, user, updatePassword } = useContext(AuthContext);
    const [error, setError] = useState("");
    const { register, handleSubmit } = useForm();
    const navigate = useNavigate();
    const location = useLocation();
    const from = location.state?.from?.pathname || "/";
-   const [tokenEmail, setTokenEmail] = useState('');
+   const [tokenEmail, setTokenEmail] = useState("");
    const token = useToken(tokenEmail);
+   const [email, setEmail] = useState('');
 
    const handleLogin = (data) => {
       console.log(data);
@@ -33,12 +33,24 @@ const Login = () => {
          });
    };
 
-      useEffect(() => {
-         if (user && user?.email && token) {
-            navigate(from, { replace: true });
-         }
-      }, [from, navigate, user, token]);
+   const handleEmail = event =>{
+      const loginEmail = event.target.value;
+      setEmail(loginEmail);
+   }
 
+   const handleForget = () => {
+      updatePassword(email)
+         .then((result) => {
+            toast.success("please check you email and reset your password");
+         })
+         .catch((error) => console.error(error));
+   };
+
+   useEffect(() => {
+      if (user && user?.email && token) {
+         navigate(from, { replace: true });
+      }
+   }, [from, navigate, user, token]);
 
    return (
       <div className="form">
@@ -55,6 +67,7 @@ const Login = () => {
                   {...register("email")}
                   placeholder="email"
                   className="input input-bordered"
+                  onBlur={handleEmail}
                />
             </div>
             <div className="form-control">
@@ -69,11 +82,10 @@ const Login = () => {
                />
             </div>
             {error && <p className="text-red-500 mt-3">{error}</p>}
-            <label id="forget" className="label">
-               <Link className="label-text text-white">
-                  <p>Forget Password?</p>
-               </Link>
-            </label>
+
+            <Link onClick={handleForget} className=" text-white">
+               <p className="my-3">Forget Password?</p>
+            </Link>
             <div className="mt-3">
                <input
                   className="btn btn-neutral w-full"

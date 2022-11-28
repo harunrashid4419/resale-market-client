@@ -3,7 +3,6 @@ import Login from "../../components/Login/Login";
 import Register from "../../components/Register/Register";
 import DashboardLayout from "../../Layout/DashboardLayout/DashboardLayout";
 import Main from '../../Layout/Main/Main';
-import AddProduct from "../../Pages/Dashboard/AddProducts/AddProduct";
 import AllBayer from "../../Pages/Dashboard/AllBayer/AllBayer";
 import AllSeller from "../../Pages/Dashboard/AllSeller/AllSeller";
 import Orders from "../../Pages/Dashboard/Dashboard/Orders/Orders";
@@ -58,10 +57,6 @@ const routes = createBrowserRouter([
         element: <PrivateRouter><DashboardLayout></DashboardLayout></PrivateRouter>,
         errorElement: <ErrorPage></ErrorPage>,
         children: [
-            {
-                path: 'dashboard',
-                element: <AddProduct></AddProduct>
-            },
             {
                 path: 'seller',
                 element: <AdminRoutes><AllSeller></AllSeller></AdminRoutes>

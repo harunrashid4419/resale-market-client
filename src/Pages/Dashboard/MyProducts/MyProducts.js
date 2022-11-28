@@ -68,7 +68,7 @@ const MyProducts = () => {
 
    
    return (
-      <div>
+      <div className="md:px-0 md:py-0 py-5 px-5">
          <p className="text-3xl text-primary font-bold">My Products</p>
          <div className="grid md:grid-cols-2 grid-cols-1 gap-6 py-12 px-8">
             {products.map((product) => (

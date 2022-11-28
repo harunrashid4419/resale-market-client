@@ -11,6 +11,7 @@ const Register = () => {
    const navigate = useNavigate();
    const [tokenEmail, setTokenEmail] = useState("");
    const [token] = useToken(tokenEmail);
+   const [error, setError] = useState('');
 
    if (token) {
       navigate("/login");
@@ -29,6 +30,7 @@ const Register = () => {
             const user = result.user;
             toast.success("Sign up success");
             console.log(user);
+            setError("");
             const userInfo = {
                displayName: data.name,
                photoURL: data.photoURL,
@@ -46,6 +48,7 @@ const Register = () => {
          })
          .catch((error) => {
             console.log(error);
+            setError(error.message);
          });
    };
 
@@ -188,12 +191,10 @@ const Register = () => {
                   </p>
                )}
             </div>
-            <label id="forget" className="label">
-               <Link className="label-text text-white mt-3">
-                  <p>Forget Password?</p>
-               </Link>
-            </label>
-            <div className="mt-3">
+            {
+               error && <p className="text-red-500 mt-3">{error}</p>
+            }
+            <div className="">
                <input
                   className="btn btn-neutral w-full mt-5"
                   value="Register"

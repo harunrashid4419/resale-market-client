@@ -13,7 +13,7 @@ const AllSeller = () => {
    });
 
    return (
-      <div>
+      <div className="md:px- 0 px-8">
          <p className="text-3xl text-primary py-5">All Seller</p>
          <div className="overflow-x-auto">
             <table className="table w-full">

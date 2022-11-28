@@ -57,7 +57,7 @@ const ProductsAdd = () => {
    };
 
    return (
-      <div className="md:pr-32 pr-4 md:py-24 py-4">
+      <div className="md:pr-32 md:pl-0 pl-5 pr-4 md:py-24 py-4">
          <h1 className="text-center mb-8 text-3xl text-primary">
             Add a Product
          </h1>
