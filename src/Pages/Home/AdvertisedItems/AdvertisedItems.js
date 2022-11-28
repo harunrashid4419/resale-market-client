@@ -8,7 +8,7 @@ const AdvertisedItems = () => {
    const { data: advertises = [] } = useQuery({
       queryKey: ["advertises"],
       queryFn: async () => {
-         const res = await fetch("http://localhost:5000/advertise");
+         const res = await fetch("https://resale-market-server-flax.vercel.app/advertise");
          const data = await res.json();
          return data;
       },
@@ -20,15 +20,12 @@ const AdvertisedItems = () => {
       <div>
          {advertises.length > 0 && (
             <div className="">
-               <div className="">
+               <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
                   {advertises.map(
                      (advertise) =>
                         !advertise.isPaid && (
                            <div className="py-12">
-                              <h3 className="mb-5 text-center text-primary font-bold text-3xl">
-                                 Advertise section
-                              </h3>
-                              <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
+                              <div className="">
                                  <SingleAdvertise
                                     advertise={advertise}
                                     setAdvertise={setAdvertise}

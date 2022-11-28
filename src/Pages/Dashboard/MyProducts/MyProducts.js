@@ -9,7 +9,7 @@ const MyProducts = () => {
       queryKey: ["products", user?.email],
       queryFn: async () => {
          const res = await fetch(
-            `http://localhost:5000/products?email=${user?.email}`
+            `https://resale-market-server-flax.vercel.app/products?email=${user?.email}`
          );
          const data = await res.json();
          return data;
@@ -18,7 +18,7 @@ const MyProducts = () => {
    console.log(products);
 
    const handleDelete = id =>{
-        fetch(`http://localhost:5000/products/${id}`, {
+        fetch(`https://resale-market-server-flax.vercel.app/products/${id}`, {
             method: "DELETE"
         })
             .then(res => res.json())
@@ -49,7 +49,7 @@ const MyProducts = () => {
          used_of_year: product.used_of_year,
       }
    
-      fetch('http://localhost:5000/advertise', {
+      fetch('https://resale-market-server-flax.vercel.app/advertise', {
          method: "POST",
          headers: {
             'content-type': 'application/json',

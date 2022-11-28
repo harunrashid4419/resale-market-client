@@ -25,7 +25,7 @@ const SingleProduct = ({ product, setProduct }) => {
    };
 
    const handleReported = (reportedProduct) => {
-      fetch("http://localhost:5000/report", {
+      fetch("https://resale-market-server-flax.vercel.app/report", {
          method: "POST",
          headers: {
             "content-type": "application/json",

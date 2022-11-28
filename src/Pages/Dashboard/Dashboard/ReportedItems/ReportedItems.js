@@ -7,7 +7,7 @@ const ReportedItems = () => {
    const { data: reports = [], refetch, isLoading } = useQuery({
       queryKey: ["reports"],
       queryFn: async () => {
-         const res = await fetch("http://localhost:5000/report");
+         const res = await fetch("https://resale-market-server-flax.vercel.app/report");
          const data = await res.json();
          return data;
       },

@@ -55,7 +55,7 @@ const Register = () => {
    const savedUserInDatabase = (name, email, photoURL, role) => {
       const userInfo = { name, email, photoURL, role };
       console.log(userInfo);
-      fetch("http://localhost:5000/users", {
+      fetch("https://resale-market-server-flax.vercel.app/users", {
          method: "POST",
          headers: {
             "content-type": "application/json",
@@ -83,7 +83,7 @@ const Register = () => {
    const savedToDb = (email, displayName, photoURL) => {
       const userInfo = { email, name: displayName, photoURL, role: "Bayer" };
       console.log(userInfo);
-      fetch("http://localhost:5000/users", {
+      fetch("https://resale-market-server-flax.vercel.app/users", {
          method: "POST",
          headers: {
             "content-type": "application/json",

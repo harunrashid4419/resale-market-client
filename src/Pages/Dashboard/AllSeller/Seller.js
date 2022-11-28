@@ -7,7 +7,7 @@ const Seller = ({ user, refetch }) => {
    const handleDelete = (id) => {
       const agree = window.confirm("Are you want to delete this user");
       if (agree) {
-         fetch(`http://localhost:5000/users/${id}`, {
+         fetch(`https://resale-market-server-flax.vercel.app/users/${id}`, {
             method: "DELETE",
          })
             .then((res) => res.json())
@@ -22,7 +22,7 @@ const Seller = ({ user, refetch }) => {
    };
 
    const handleVerify = (id) => {
-      fetch(`http://localhost:5000/users/${id}`, {
+      fetch(`https://resale-market-server-flax.vercel.app/users/${id}`, {
          method: "PUT",
       })
          .then((res) => res.json())

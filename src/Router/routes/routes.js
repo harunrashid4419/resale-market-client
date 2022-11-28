@@ -48,7 +48,7 @@ const routes = createBrowserRouter([
             {
                 path: '/products/:category_id',
                 element: <PrivateRouter><Products></Products></PrivateRouter>,
-                loader: ({params}) => fetch(`http://localhost:5000/products/${params.category_id}`)
+                loader: ({params}) => fetch(`https://resale-market-server-flax.vercel.app/products/${params.category_id}`)
             },
         ]
     },
@@ -80,7 +80,7 @@ const routes = createBrowserRouter([
             {
                 path: 'payment/:id',
                 element: <Payment></Payment>,
-                loader: ({params}) => fetch(`http://localhost:5000/orders/${params.id}`)
+                loader: ({params}) => fetch(`https://resale-market-server-flax.vercel.app/orders/${params.id}`)
             },
             {
                 path: 'productadd',

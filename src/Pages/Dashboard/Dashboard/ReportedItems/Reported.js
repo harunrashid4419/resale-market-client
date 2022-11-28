@@ -8,7 +8,7 @@ const Reported = ({ report, refetch }) => {
    const handleDeleteToReport = (id) => {
       const agree = window.confirm("DO you want to delete?");
       if (agree) {
-         fetch(`http://localhost:5000/report/${id}`, {
+         fetch(`https://resale-market-server-flax.vercel.app/report/${id}`, {
             method: "DELETE",
          })
             .then((res) => res.json())

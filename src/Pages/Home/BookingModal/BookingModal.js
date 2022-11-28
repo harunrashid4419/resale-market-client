@@ -28,7 +28,7 @@ const BookingModal = ({ product, setProduct }) => {
          productId: _id,
       };
       console.log(booked)
-      fetch('http://localhost:5000/orders', {
+      fetch('https://resale-market-server-flax.vercel.app/orders', {
         method: 'POST',
         headers: {
             'content-type': 'application/json'

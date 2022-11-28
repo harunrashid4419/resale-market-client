@@ -10,7 +10,7 @@ const Orders = () => {
       queryKey: ["orders", user?.email],
       queryFn: async () => {
          const res = await fetch(
-            `http://localhost:5000/orders?email=${user?.email}`);
+            `https://resale-market-server-flax.vercel.app/orders?email=${user?.email}`);
          const data = await res.json();
          return data;
       },

@@ -5,7 +5,7 @@ const useBayer = email =>{
     const [isLoading, setIsLoading] = useState(true);
     useEffect(() =>{
         if(email){
-            fetch(`http://localhost:5000/users/bayer/${email}`)
+            fetch(`https://resale-market-server-flax.vercel.app/users/bayer/${email}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);

@@ -39,7 +39,7 @@ const ProductsAdd = () => {
          location,
       };
 
-      fetch("http://localhost:5000/products", {
+      fetch("https://resale-market-server-flax.vercel.app/products", {
          method: "POST",
          headers: {
             "content-type": "application/json",
