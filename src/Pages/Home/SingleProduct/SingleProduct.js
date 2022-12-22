@@ -42,7 +42,7 @@ const SingleProduct = ({ product, setProduct }) => {
    };
 
    return (
-      <div>
+      <div className="products-section">
          <div className="single_products">
             <div className="card w-full shadow-xl p-5 bg-gray-300">
                <p className="card-title text-black-400 text-right">
@@ -92,7 +92,9 @@ const SingleProduct = ({ product, setProduct }) => {
                      Product Type:{" "}
                      <span className="text-xl text-primary">{review}</span>
                   </p>
-                  <p className="my-5 text-md">Description: {description}</p>
+                  <p className="my-5 text-md">Description: {
+                     description.length > 180 ? description.slice(0, 180) + '...' : description
+                  }</p>
                </div>
                <h2 className="card-title text-gray-600">User: {name}</h2>
                <div className="card-actions mx-auto mt-5">
